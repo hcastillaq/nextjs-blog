@@ -1,9 +1,18 @@
+@use './colors' as colors;
+
+:root {
+  --background: #{colors.$background};
+  --font-color: #{colors.$font-color};
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background);
+  color: var(--font-color);
 }
 
 a {
