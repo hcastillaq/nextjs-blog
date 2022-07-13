@@ -18,7 +18,7 @@ const Stars: FC = () => {
       parent: container.current as HTMLElement,
       numParticles: 1000,
       background: 'black',
-      particleColor: '#ffffff7d',
+      particleColor: '#ffffff63',
       maxParticleSize: 3, //optional
       fps: 30, //optional
       speed: 5, //optional
