@@ -1,52 +1,16 @@
 import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { Suspense, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import Articles from '../components/Articles';
+import Experiments from '../components/Experiments';
+import Seo from '../components/shared/Seo';
+import SocialList from '../components/shared/SocialList';
 
 const Name = styled.h1`
   font-size: 6rem;
   font-weight: 800;
   @media (max-width: 700px) {
     font-size: 3rem;
-  }
-`;
-
-const SocialList = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 10px;
-  margin: 0px;
-  padding: 0px;
-  justify-content: flex-end;
-  align-items: center;
-  flex-wrap: wrap;
-  li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #00ffff;
-    text-align: center;
-    transition: font-weight 0.08s;
-    @media (max-width: 700px) {
-      font-size: 1rem;
-    }
-    &:hover {
-      font-weight: 800;
-    }
-    &::after {
-      content: '|';
-      margin-left: 10px;
-      color: white;
-      font-weight: bold !important;
-    }
-
-    &:last-of-type {
-      &::after {
-        content: '';
-      }
-    }
   }
 `;
 
@@ -57,20 +21,15 @@ const Description = styled.p`
   }
 `;
 
+const Stars = dynamic(() => import('./../components/shared/Stars'), {
+  ssr: false,
+});
+
 const Home: NextPage = () => {
-  const [client, setClient] = useState(false);
-  const StarsComponent = dynamic(
-    () => import('./../libs/effetcs/stars/stars'),
-    {
-      ssr: false,
-    }
-  );
-  useEffect(() => {
-    setClient(true);
-  }, []);
   return (
     <>
-      {/* <StarsComponent /> */}
+      <Seo />
+      <Stars />
 
       <div style={{ zIndex: 2, position: 'relative' }}>
         <div
@@ -95,17 +54,10 @@ const Home: NextPage = () => {
           películas y me gusta el arte.
         </Description>
 
-        <div style={{ marginTop: '60px' }}>
-          <SocialList>
-            <li>CV</li>
-            <li>Linkedin</li>
-            <li>Instagram</li>
-            <li>Medium</li>
-          </SocialList>
-        </div>
-
-        <div style={{ margin: '50px 0px' }}>
-          <h2 style={{ color: '#00ffff', fontSize: '2rem' }}>Experimentos</h2>
+        <div style={{ marginBottom: '100px' }}>
+          <SocialList />
+          <Experiments />
+          <Articles />
         </div>
       </div>
     </>
