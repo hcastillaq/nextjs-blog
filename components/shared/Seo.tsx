@@ -14,6 +14,23 @@ const Seo = () => {
         content="hernan castilla, hcastillaq, blog, programacion,developer,programming, angular, react, nodejs, laravel, nextjs"
       />
       <meta name="author" content="hernan castilla" />
+
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=G-17S58DJ4TB`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-17S58DJ4TB', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
     </Head>
   );
 };
