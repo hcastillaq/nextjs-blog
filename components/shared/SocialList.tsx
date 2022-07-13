@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 const Ul = styled.ul`
@@ -39,14 +40,38 @@ const Ul = styled.ul`
   }
 `;
 
+const data = [
+  {
+    name: 'CV',
+    url: '/cv.pdf',
+  },
+  {
+    name: 'Linkedin',
+    url: 'https://www.linkedin.com/in/hcastillaq/',
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/hcastillaq/',
+  },
+  {
+    name: 'medium',
+    url: 'https://hcastillaq.medium.com/',
+  },
+];
+
 const SocialList = () => {
   return (
     <div style={{ marginTop: '60px' }}>
       <Ul>
-        <li>CV</li>
-        <li>Linkedin</li>
-        <li>Instagram</li>
-        <li>Medium</li>
+        {data.map((obj, index) => {
+          return (
+            <Link passHref href={obj.url} key={index}>
+              <a target="_blank">
+                <li>{obj.name}</li>
+              </a>
+            </Link>
+          );
+        })}
       </Ul>
     </div>
   );
